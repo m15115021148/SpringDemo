@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.dao.UserDao">
+
+	<!-- 注册 -->
+	<insert id="registerUser" parameterType="com.geek.po.UserModel">
+	   insert into userInfo(name,password) values(#{name},#{password});
+	</insert>
+	
+	<!-- 登录 -->
+	<select id="loginUser" resultType="com.geek.po.UserModel">
+	   select * from userInfo where name=#{name} and password=#{password};
+	</select>
+
+	<!-- 根据id获取用户信息 -->
+	<select id="findUserById" resultType="int">
+		select * from userInfo where id=#{id}
+	</select>
+	<!-- 自定义条件查询用户列表 -->
+	<select id="findUserByUserName" resultType="com.geek.po.UserModel">
+	   select * from userInfo where name like '%${value}%' 
+	</select>
+	
+</mapper>
