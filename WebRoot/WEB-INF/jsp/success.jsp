@@ -22,12 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     	成功</br>
-    	<c:forEach items="${list}" var="user" varStatus="s">
+    	<%-- <c:forEach items="${list}" var="user" varStatus="s">
 			<tr>
 				<td>${user.name}</td>
 				<td>${user.age }</td>
 				<td>${user.address}</td>
 			</tr>
-		</c:forEach>
+		</c:forEach> --%>
   </body>
 </html>

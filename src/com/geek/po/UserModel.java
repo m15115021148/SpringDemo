@@ -1,11 +1,11 @@
 package com.geek.po;
 
 public class UserModel {
-	private int id;
+	private String userID;
 	private String name;
 	private String password;
-	private int age;
-	private int sex;
+	private String age;
+	private String sex;
 	private String address;
 	private String code;
 	private String telphone;
@@ -13,13 +13,15 @@ public class UserModel {
 	private String photo;
 	private String createTime;
 	private String lastTime;
+	private String result;
+	private String errorMsg;
 
-	public int getId() {
-		return id;
+	public String getUserID() {
+		return userID;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
 	public String getName() {
@@ -38,19 +40,19 @@ public class UserModel {
 		this.password = password;
 	}
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 
@@ -108,6 +110,22 @@ public class UserModel {
 
 	public void setLastTime(String lastTime) {
 		this.lastTime = lastTime;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
 	}
 
 }

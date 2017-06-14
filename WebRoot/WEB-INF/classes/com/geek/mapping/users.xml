@@ -4,21 +4,70 @@
 
 	<!-- 注册 -->
 	<insert id="registerUser" parameterType="com.geek.po.UserModel">
-	   insert into userInfo(name,password) values(#{name},#{password});
+	   insert into userInfo(name,password,createTime) values(#{name},#{password},#{createTime});
 	</insert>
 	
 	<!-- 登录 -->
 	<select id="loginUser" resultType="com.geek.po.UserModel">
-	   select * from userInfo where name=#{name} and password=#{password};
+	   select * from userInfo where name=#{name} and password=#{password}
+	   <!-- select * from userInfo
+	   <trim prefix="where" prefixOverrides="and|or">
+	  		<if test="name !=null and name !=''">
+	  			name =#{name}
+	  		</if>
+	  		<if test="password !=null and password !=''">
+	  			and password =#{password}
+	  		</if>
+	   </trim> -->
 	</select>
 
 	<!-- 根据id获取用户信息 -->
-	<select id="findUserById" resultType="int">
-		select * from userInfo where id=#{id}
+	<select id="findUserById" resultType="com.geek.po.UserModel">
+		select * from userInfo where userID=#{userID}
 	</select>
-	<!-- 自定义条件查询用户列表 -->
+	<!-- 查询用户名是否存在 -->
 	<select id="findUserByUserName" resultType="com.geek.po.UserModel">
-	   select * from userInfo where name like '%${value}%' 
+	  <!--  select * from userInfo where name like '%${value}%' --> 
+	  select * from userInfo where name=#{name}
 	</select>
+	
+	<!-- 上传头像 -->
+	<update id="uploadHeader" parameterType="java.lang.String">		
+		update userInfo
+		<trim prefix="set" suffixOverrides=",">  
+	        <if test="photo != null and photo != ''">  
+	            photo = #{photo}
+	        </if>
+    	</trim>
+    	<trim prefix="where" suffixOverrides="and|or">
+    		<if test="userID != null and userID != ''">  
+	             userID = #{userID}
+	        </if>
+    	</trim>	
+	</update>
+	
+	<!-- 修改个人资料 -->
+	<update id="updateUserInfo" parameterType="java.lang.String">		
+		update userInfo
+		<trim prefix="set" suffixOverrides=",">  
+	        <if test="sex != null and sex != ''">  
+	            sex = #{sex},
+	        </if>  
+	        <if test="age != null and age != ''">  
+	             age = #{age},
+	        </if>  
+	        <if test="telphone != null and telphone != ''">  
+	             telphone = #{telphone},
+	        </if>
+	        <if test="email != null and email != ''">  
+	             email = #{email}
+	        </if>
+    	</trim>
+    	<trim prefix="where" suffixOverrides="and|or">
+    		<if test="userID != null and userID != ''">  
+	             userID = #{userID}
+	        </if>
+    	</trim>  
+	</update>
 	
 </mapper>

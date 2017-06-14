@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.dao.KindDao">
+	
+	<!-- 得到类型标 数据-->
+	<select id="getKind" parameterType="com.geek.po.KindModel" resultType="com.geek.po.KindModel">
+		select * from kind order by kindID
+	</select>
+	
+	<!-- 根据id得到值-->
+	<select id="findKindID" parameterType="java.lang.String" resultType="java.lang.String">
+		select * from kind where kindID = #{kindID}
+	</select>
+	
+</mapper>

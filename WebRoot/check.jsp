@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <form action="userControl/check.do" method="post">
+    <form action="dbAction/check.do" method="post">
     	用户名：<input type="text" name="name"><br/>
     	<input type="submit" value="查询">
     </form>
